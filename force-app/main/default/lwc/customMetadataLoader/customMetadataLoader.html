@@ -1,0 +1,60 @@
+<template>
+    <div class="full-screen">
+        <div class="card">
+            <lightning-spinner if:true={showSpinner}></lightning-spinner>
+            <div class="metadata">
+                <h2>Select Custom Metadata Type</h2>
+                <lightning-combobox
+                    name="metadata"
+                    value={selectedMetadata}
+                    placeholder="--NONE--"
+                    options={metaDataOptions}
+                    class="combobox"
+                    variant="brand"
+                    onchange={handleMetadataChange}>
+                </lightning-combobox>
+            </div>
+                <h1 class="header">Upload a CSV file to save its contents as Custom Meta records</h1>
+                <div class="metadata">
+                    <h1>Upload CSV file</h1> &nbsp;&nbsp;
+                    <lightning-icon icon-name="utility:attach" alternative-text="attach" size="x-small" title="attach"></lightning-icon>
+                    <input type="file" accept=".csv" onchange={handleFileChange}/>&nbsp;
+                </div>
+                <br>
+            <div class="button-layout">
+                <template if:true={showUploadButton}>
+                    <lightning-button
+                        class="slds-m-top--medium, button"
+                        label="Upload CSV"
+                        title="Upload CSV"
+                        variant="brand"
+                        icon-name="utility:upload"
+                        onclick={handleFileUpload}>
+                    </lightning-button>
+                </template>
+
+                <template if:true={showSaveButton}>
+                    <lightning-button
+                        class="slds-m-top--medium, button"
+                        label="Save"
+                        title="Save"
+                        variant="brand"
+                        icon-name="utility:save"
+                        onclick={handleSave}>
+                    </lightning-button>
+                </template>
+                
+                <template if:true={showExportButton}>
+                    <lightning-button
+                        class="slds-m-top--medium, button"
+                        label="Export"
+                        title="Export"
+                        variant="brand"
+                        icon-name="utility:download"
+                        onclick={exportToExcel}>
+                    </lightning-button>
+                </template>      
+            </div>
+        </div>
+    </div>
+</template>

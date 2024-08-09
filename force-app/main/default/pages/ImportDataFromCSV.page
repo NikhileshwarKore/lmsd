@@ -1,0 +1,123 @@
+<apex:page controller="ImportDataFromCSV" showHeader="false" lightningStyleSheets="true" title="MetaData Uploader">
+
+     <apex:stylesheet value="{!$Resource.CustomMetadataLoaderStyles}" />
+  <apex:slds />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.jquery.min.js"></script>
+
+  <div id="spinner" class="slds-spinner_container slds-hidden">
+    <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="status">
+         <span class="slds-assistive-text">Loading</span>  
+      <div class="slds-spinner__dot-a"></div>
+      <div class="slds-spinner__dot-b"></div>
+    </div>
+  </div>
+
+  <apex:form >
+    <br/>
+    <div class="center">
+      <div>
+        <div class="gridCenter">
+          <apex:panelGrid >
+
+            <br/>
+            <apex:pageBlock id="controlPanel">
+              <div class="center">
+                <div class="err-msg">
+                  <apex:pagemessages />
+                </div>
+              </div>
+              <apex:pageBlockSection id="controlPanelSection">
+                <apex:pageBlockSectionItem >
+                  <apex:outputText >Select Custom Metadata Type</apex:outputText>
+                  <apex:selectList size="1" value="{!selectedObject}" styleClass="sel-list-cls">
+                    <apex:selectOptions value="{!customMetaDataList}"></apex:selectOptions>
+                  </apex:selectList>
+                </apex:pageBlockSectionItem>
+              </apex:pageBlockSection>
+              <div class="center">
+                <div class="chooseFile">
+                  <table class="controlPanel fromFile">
+                    <tr>
+                      <td colspan="2">
+                        <b>Upload a CSV file to save its contents as Custom Meta records</b>
+                      </td>
+                    </tr>
+
+                    <tr class="even">
+                      <td>Upload CSV file</td>
+                      <td>
+
+                        <apex:inputFile value="{!csvFileBody}" accept="csv" contentType="text/csv" />
+                      </td>
+
+                    </tr> &nbsp;
+                    <table>
+                      <tr>
+                        <td>&nbsp;</td>
+
+                        <td>
+
+                          <apex:pageBlockSection columns="1">
+                            <apex:pageBlockSectionItem >
+
+                              <apex:outputPanel >
+                                <div class="recordCount">
+
+                                  <b>
+                                    <apex:outputText value="{!OutPutString}" rendered="{!readSuccess}" />
+                                  </b>
+                                </div>
+                                <tr>
+
+                                  <td>
+                                    <div class="buttons">
+                                      <apex:commandButton styleClass="slds-button slds-button--brand" value="Upload CSV" action="{!readFromFile}" onclick="document.getElementById('spinner').classList.remove('slds-hidden')"
+                                        rendered="{!NOT(readSuccess)}" />
+
+                                      <apex:commandButton styleClass="slds-button slds-button--brand" value="Save" action="{!saveData}" rendered="{!readSuccess}"
+    										onclick="document.getElementById('spinner').classList.remove('slds-hidden')"/>
+
+                                 	<apex:commandButton styleClass="slds-button slds-button--brand export-btn" value="Export" action="{!ExportToExcel}" id="export-btn"
+    								/>
+                                   </div>
+                                  </td>
+                                </tr>
+                              </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                          </apex:pageBlockSection>
+
+                        </td>
+                      </tr>
+
+                    </table>
+
+                  </table>
+                </div>
+              </div>
+           </apex:pageBlock>
+         </apex:panelGrid>
+        </div>
+      </div>
+    </div>
+  </apex:form>
+<script defer="true">
+  function showSpinner() {
+    document.getElementById('spinner').classList.remove('slds-hidden');
+  }
+</script>
+<script defer="true">
+  $(document).ready(function () {
+    $('.export-btn').hide();
+    $('.sel-list-cls').change(() => {
+      $('.export-btn').show();
+            document.getElementById('spinner').classList.add('slds-hidden');
+
+        //document.getElementById('export-btn').classList.remove('slds-hidden');
+    });
+  });
+</script>
+
+
+
+</apex:page>

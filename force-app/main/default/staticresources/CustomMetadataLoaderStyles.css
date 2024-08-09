@@ -1,0 +1,92 @@
+
+.controlPanel td {
+  width: 250px;
+ }
+
+.controlPanel {
+  margin-top: 20px;
+ }
+
+.err-msg {
+  width: 500px;
+ }
+
+.err-msg table td:first-child {
+  width: 10px;
+  padding-top: 8px;
+ }
+
+.err-msg table tr:nth-child(2) {
+  display: none;
+ }
+.err-msg .slds-scope img {
+  border: 2px solid !important;
+  border-radius: 50% !important;
+ }
+
+.err-msg table td {
+  font-size: 13px;
+  margin-top: 5px !important;
+ }
+
+.err-msg img.msgIcon {
+  border: 2px solid;
+  border-radius: 50%;
+  margin-top: -2px !important;
+ }
+
+table.controlPanel.fromFile {
+  margin-top: 0px !important;
+ }
+
+table.controlPanel.fromFile tr:nth-child(2) td:nth-child(1) {
+  width: 12%;
+ }
+
+.pbSubsection th.labelCol.vfLabelColTextWrap.first.last {
+  font-size: 14px;
+  top: 4px;
+  text-align: left;
+ }
+
+.pbSubsection td.dataCol.first.last {
+  width: 17%;
+ }
+
+.err-msg table td span {
+  font-weight: 600;
+  padding-right: 10px;
+ }
+
+.controlPanel tr:nth-child(3) {
+  display: none;
+ }
+
+.controlPanel tr:nth-child(2) td:nth-child(1) {
+  width: 10px;
+ }
+.gridCenter{
+  width:1070px;
+  position:relative;
+}
+.chooseFile{
+  border-collapse: collapse;
+  width: 100%;
+}
+.recordCount{
+  width:610px;
+  text-align:right;
+}
+.buttons{
+  display:flex;
+  align-items:center;
+  width:550px;
+  justify-content: flex-end;
+}
+
+.center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+

@@ -1,0 +1,71 @@
+<apex:page controller="ExportDataFromMetadata" showHeader="false" lightningStyleSheets="true" title="MetaData Uploader">
+ <script>
+    function showLoading() {
+        document.getElementById('loadingMessage').style.display = 'block';
+    }
+
+    function showSuccessMessage() {
+        document.getElementById('successMessage').style.display = 'block';
+    }
+</script>
+
+<apex:actionStatus id="exportStatus">
+    <apex:facet name="start">
+        <img src="/img/loading32.gif" alt="loading"/>
+        <span id="loadingMessage" style="display:none;">Exporting records...</span>
+    </apex:facet>
+    <apex:facet name="stop">
+        <span id="successMessage" style="display:none;">Export complete!</span>
+    </apex:facet>
+</apex:actionStatus>   
+    <style>
+        .zero-height {
+        	max-height:0rem !important;
+        }
+        .slds-spinner-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+    <!--<apex:include pageName="ExportFieldsFromMetadataToCSV"/> -->
+    <div class="zero-height">
+        <apex:iframe src="{!pageName}" />
+    </div>
+
+	 <div class="slds-spinner-container slds-hidden" id="spinnerContainer">
+        <div class="slds-spinner--brand slds-spinner slds-spinner--small" role="status">
+            <span class="slds-assistive-text">Loading.....</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    
+      <script  >
+       let showToast = _ => {
+            debugger;
+            sforce.one.showToast({
+                "title": "Success",
+                "message": "File downloading.Please be hold",
+                "type": "Success"
+            });
+        }
+        /*window.onload = showToast();
+    	var timer = setTimeout(function() {
+            window.location = window.location.origin+'/lightning/n/Custom_Metadata_Type_Loader';
+             }, 95000); */ 
+
+        window.onload = () => {
+            showToast();
+            var timer = setTimeout(() => {
+                document.getElementById('spinnerContainer').classList.add('slds-hidden');
+                window.location = window.location.origin + '/lightning/n/Custom_Metadata_Type_Loader';
+            }, 95000);
+        };
+  
+    </script>
+
+<noscript>Your browser does not support JavaScript!</noscript>
+</apex:page>

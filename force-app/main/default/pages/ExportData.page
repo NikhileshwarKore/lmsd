@@ -1,0 +1,14 @@
+<apex:page controller="ImportDataFromCSV" readOnly="true" contentType="application/vnd.ms-excel#ExportFile.xls">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!sobjectsTempList}" var="sobjt">
+            <apex:repeat value="{!fieldList}" var="fieldName">
+                <apex:column value="{!sobjt[fieldName]}">
+                    <apex:facet name="header">{!fieldName}</apex:facet>
+                </apex:column>
+            </apex:repeat>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+
+    
+</apex:page>
