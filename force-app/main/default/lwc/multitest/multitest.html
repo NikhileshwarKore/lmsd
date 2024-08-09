@@ -1,0 +1,71 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Multi Select Custom Lookup in Lightning Web Components
+        </h3>
+        <div slot="footer"></div>
+        <div>
+            <!-- Territory Combobox -->
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Territory" value={territoryValue} onchange={handleTerritoryChange} options={territoryOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <!-- CaseId Combobox -->
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="CaseId" value={caseIdValue} onchange={handleCaseIdChange} options={caseIdOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <!-- Patient Combobox -->
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Patient" value={patientValue} onchange={handlePatientChange} options={patientOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <!-- Multi-select custom lookup -->
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        <div class={txtclassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                            <!-- Input and search icon -->
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                <div>
+                                    <span class="slds-icon_container slds-icon-utility-search slds-input__icon iconheight">
+                                        <lightning-icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" size="x-small" alternative-text="icon"></lightning-icon>
+                                    </span>
+                                </div>
+                                <lightning-input required={required} data-id="userinput" label={Label} name="searchText" onchange={searchField} class="leftspace"></lightning-input>
+                                <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">
+                                    <lightning-icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" icon-name="utility:search" size="x-small" alternative-text="icon"></lightning-icon>
+                                </span>
+                            </div>
+                            <!-- Selected records -->
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                <template for:each={selectedRecords} for:item="serecord">
+                                    <span key={serecord.recId}>
+                                        <lightning-pill label={serecord.recName} name={serecord.recId} onremove={removeRecord}></lightning-pill>
+                                    </span>
+                                </template>
+                            </div>
+                            <!-- Search result dropdown -->
+                            <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={searchRecords} for:item="serecord">
+                                        <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                            <div data-id={serecord.recId} data-name={serecord.recName} onclick={setSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                <span class="slds-media__figure">
+                                                    <span class="slds-icon_container slds-icon-standard-account"></span>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <div if:true={messageFlag}>No result found.</div>
+                            <div if:true={LoadingText}>Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

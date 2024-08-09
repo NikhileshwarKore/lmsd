@@ -1,0 +1,125 @@
+<template>
+    <lightning-card>
+        <h2 style="margin-left: 10px;">Filter:</h2>
+        <div class="slds-grid slds-gutters" style="margin-left: 10px;">
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Contact"
+                            object-api-name="Contact"
+                            field-api-names="Id,Name"
+                            filter-field-api-name="Name"
+                            icon-name="standard:contact"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-input type="date" placeholder="DOB" onchange={handleDOBChange} value={dateOfBirthVal} variant="label-inline" class="slds-size_full"></lightning-input>
+            </div>
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Account"
+                            object-api-name="Account"
+                            field-api-names="Id,Name"
+                            filter-field-api-name="Name"
+                            icon-name="standard:account"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Cases"
+                            object-api-name="Case"
+                            field-api-names="Id,Casenumber"
+                            filter-field-api-name="Casenumber"
+                            icon-name="standard:case"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+
+       <div class="slds-size_1-of-5">
+    <div class="slds-p-left_x-large">
+        <div class="slds-form-element slds-form-element_horizontal">
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_3-of-5"> <!-- Adjusted size -->
+                    <lightning-input type="date" placeholder="DOB" onchange={handleDOBChange} value={dateOfBirthVal} variant="label-inline"></lightning-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Contact"
+                            object-api-name="Contact"
+                            field-api-names="Id,Name"
+                            filter-field-api-name="Name"
+                            icon-name="standard:contact"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Account"
+                            object-api-name="Account"
+                            field-api-names="Id,Name"
+                            filter-field-api-name="Name"
+                            icon-name="standard:account"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div class="slds-size_1-of-4 slds-col_bump-bottom">
+                <lightning-layout>
+                    <lightning-layout-item size="12" alignment-bump="bottom" flexibility="auto">
+                        <c-lwc-multi-select-lookup 
+                            label-name="Search Cases"
+                            object-api-name="Case"
+                            field-api-names="Id,Casenumber"
+                            filter-field-api-name="Casenumber"
+                            icon-name="standard:case"
+                            onretrieve={selectItemEventHandler} 
+                            onremove={deleteItemEventHandler}>
+                        </c-lwc-multi-select-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-gutters slds-text-align_center" style="margin-top: 25px;">
+            <div class="slds-col slds-size_2-of-5"></div> <!-- Adjusted column size for centering -->
+            <div class="slds-col slds-size_1-of-5">
+                <lightning-button-group class="slds-m-horizontal_auto">
+                    <lightning-button label="Search" onclick={handleSearch} variant="brand"></lightning-button>
+                    <lightning-button label="Clear" onclick={handleClear} variant="destructive"></lightning-button>
+                </lightning-button-group>
+            </div>
+            <div class="slds-col slds-size_2-of-5"></div> <!-- Adjusted column size for centering -->
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <c-common-multi-select-lookup 
+        object-api-name="Contact"
+        label-name="Select Contact"
+        place-holder="Search Contact"
+        title-field-name="Name"
+        sub-title-field-name="Account.Name"
+        sub-title2-field-name="Account.Email__c"
+        lookup-condition=""
+        icon-name="standard:contact"
+        onselection={selectionHandler}
+        >
+        </c-common-multi-select-lookup>
+    </lightning-card>   
+</template>

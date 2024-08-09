@@ -1,0 +1,50 @@
+<template>
+    <lightning-card>
+        <h2>Filter:</h2>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Region" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Patient" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-input type="date" placeholder="DOB" onchange={handleDOBChange} value={dateOfBirthVal} variant="label-inline"></lightning-input>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Provider" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <!-- Empty div for spacing -->
+            </div>
+        </div>
+
+        <div class="slds-grid slds-gutters">
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Territory" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="CaseId" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Site/Facility" value={value} onchange={handleChange} options={statusOptions} variant="label-inline" style="padding-left:5px;"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5">
+                <lightning-combobox placeholder="Case Status" value={value} onchange={handleChange} options={statusOptions} variant="label-inline"></lightning-combobox>
+            </div>
+            <div class="slds-size_1-of-5"> <!-- Empty div for spacing -->
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-gutters slds-text-align_center" style="margin-top: 25px;"> <!-- Centering the buttons with margin -->
+            <div class="slds-col slds-size_1-of-5"></div>
+            <div class="slds-col slds-size_3-of-5">
+                <lightning-button-group class="slds-m-horizontal_auto">
+                    <lightning-button label="Search" onclick={handleSearch} variant="brand"></lightning-button>
+                    <lightning-button label="Clear" onclick={handleClear} variant="destructive"></lightning-button>
+                </lightning-button-group>
+            </div>
+            <div class="slds-col slds-size_1-of-5"></div>
+        </div>
+    </lightning-card>
+</template>

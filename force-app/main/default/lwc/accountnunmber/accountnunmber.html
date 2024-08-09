@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Search Account Numbers">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="accountNumber"
+                label="Select Account Numbers"
+                placeholder="Select account numbers"
+                options={accountOptions}
+                onchange={handleAccountSelection}
+                multiple
+                searchable
+            ></lightning-combobox>
+        </div>
+        <template if:true={selectedAccounts}>
+            <lightning-card title="Selected Accounts">
+                <div class="slds-m-around_medium">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={selectedAccounts}
+                        columns={columns}
+                        hide-checkbox-column="true"
+                    ></lightning-datatable>
+                </div>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>
